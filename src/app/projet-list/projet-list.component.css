@@ -1,0 +1,27 @@
+/* Styles pour la table des projets */
+.table {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Boutons d'action */
+  .btn {
+    margin: 4px;
+  }
+  
+  .create-btn, .delete-btn, .view-btn, .edit-btn {
+    padding: 6px 12px;
+  }
+  
+  .create-project-btn {
+    margin-top: 20px;
+  }
+  
