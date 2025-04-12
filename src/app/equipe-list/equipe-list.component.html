@@ -1,0 +1,35 @@
+<!-- Message d'erreur -->
+<div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
+  <!-- Menu avec la liste des équipes -->
+  <mat-menu #equipeMenu="matMenu">
+    <!-- Si la liste est vide -->
+    <ng-container *ngIf="equipes.length === 0; else equipeList">
+      <button mat-menu-item disabled>Aucune équipe disponible</button>
+    </ng-container>
+  
+    <!-- Sinon, afficher les équipes -->
+    <ng-template #equipeList>
+      <ng-container *ngFor="let equipe of equipes">
+        <button mat-menu-item (click)="showEquipeDetails(equipe)">
+          <div class="equipe-item-content">
+            <div class="equipe-info">
+              <strong>{{ equipe.nomEquipe }}</strong><br />
+              <small>{{ equipe.disponibilite }}</small>
+            </div>
+            <div class="equipe-actions">
+              <button mat-icon-button (click)="editEquipe(equipe); $event.stopPropagation()" matTooltip="Modifier">
+                ✏️
+              </button>
+              <button mat-icon-button (click)="deleteEquipe(equipe); $event.stopPropagation()" matTooltip="Supprimer">
+                🗑️
+              </button>
+            </div>
+          </div>
+        </button>
+      </ng-container>
+    </ng-template>
+  </mat-menu>
+  
