@@ -13,6 +13,7 @@ import { ProjetDetailsComponent } from './projet-details/projet-details.componen
 import { ProjetFormComponent } from './projet-form/projet-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VehiculeComponent } from './vehicule/vehicule.component';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponent,
     ProjetListComponent,
     ProjetDetailsComponent,
-    ProjetFormComponent
+    ProjetFormComponent,
   ],
   imports: [
     BrowserModule,

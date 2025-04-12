@@ -7,6 +7,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProjetListComponent } from './projet-list/projet-list.component';
 import { ProjetDetailsComponent } from './projet-details/projet-details.component';
 import { ProjetFormComponent } from './projet-form/projet-form.component';
+import { VehiculeComponent } from './vehicule/vehicule.component';
 
 const routes: Routes = [
   { path: '', component: ProjetListComponent }, // Page d'accueil
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'projets', component: ProjetListComponent },
   { path: 'projets/create', component: ProjetFormComponent },
   { path: 'projets/:id', component: ProjetDetailsComponent },
+  { path: 'vehicule', component: VehiculeComponent },
   { path: 'projets/edit/:id', component: ProjetFormComponent },
   { path: '', redirectTo: '/projets', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent } // Pour toute autre route inconnue

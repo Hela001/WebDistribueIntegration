@@ -1,0 +1,70 @@
+<!-- Ajouter un véhicule -->
+<button (click)="showAddForm()" class="btn btn-primary">Ajouter un véhicule</button>
+
+<!-- Formulaire d'ajout de véhicule -->
+<div *ngIf="isAdding" class="add-form">
+  <h3>Ajouter un véhicule</h3>
+  <form [formGroup]="addVehiculeForm" (ngSubmit)="onAdd()">
+    <div>
+      <label for="marque">Marque</label>
+      <input id="marque" formControlName="marque">
+    </div>
+    <div>
+      <label for="matricule">Matricule</label>
+      <input id="matricule" formControlName="matricule">
+    </div>
+    <div>
+      <label for="disponibilite">Disponibilité</label>
+      <input id="disponibilite" formControlName="disponibilite">
+    </div>
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
+
+<div *ngIf="vehicules.length > 0">
+    <table class="vehicules-table">
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th>Marque</th>
+          <th>Matricule</th>
+          <th>Disponibilité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicule of vehicules">
+          <td>
+            <button (click)="updateVehicule(vehicule)" class="btn btn-warning">Modifier</button>
+            <button (click)="deleteVehicule(vehicule.idVehicule)" class="btn btn-danger">Supprimer</button>
+          </td>
+          <td>{{ vehicule.marque }}</td>
+          <td>{{ vehicule.matricule }}</td>
+          <td>{{ vehicule.disponibilite }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+<div *ngIf="vehicules.length === 0">
+    Aucun véhicule trouvé.
+</div>
+
+<!-- Formulaire de mise à jour -->
+<div *ngIf="selectedVehicule" class="update-form">
+  <h3>Modifier le véhicule</h3>
+  <form [formGroup]="vehiculeForm" (ngSubmit)="onUpdate()">
+    <div>
+      <label for="marque">Marque</label>
+      <input id="marque" formControlName="marque" [value]="selectedVehicule.marque">
+    </div>
+    <div>
+      <label for="matricule">Matricule</label>
+      <input id="matricule" formControlName="matricule" [value]="selectedVehicule.matricule">
+    </div>
+    <div>
+      <label for="disponibilite">Disponibilité</label>
+      <input id="disponibilite" formControlName="disponibilite" [value]="selectedVehicule.disponibilite">
+    </div>
+    <button type="submit" class="btn btn-success">Modifier</button>
+  </form>
+</div>
