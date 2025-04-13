@@ -13,6 +13,11 @@ import { ProjetDetailsComponent } from './projet-details/projet-details.componen
 import { ProjetFormComponent } from './projet-form/projet-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FactureListComponent } from './facture-list/facture-list.component';
+import { FactureAddComponent } from './facture-add/facture-add.component';
+import { FactureDetailsComponent } from './facture-details/facture-details.component';
+import { FactureEditComponent } from './facture-edit/facture-edit.component';
+
 
 
 @NgModule({
@@ -25,7 +30,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponent,
     ProjetListComponent,
     ProjetDetailsComponent,
-    ProjetFormComponent
+    ProjetFormComponent,
+    FactureListComponent,
+    FactureAddComponent,
+    FactureDetailsComponent,
+    FactureEditComponent,
+
+    
   ],
   imports: [
     BrowserModule,
