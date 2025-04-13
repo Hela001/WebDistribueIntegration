@@ -13,6 +13,8 @@ import { ProjetDetailsComponent } from './projet-details/projet-details.componen
 import { ProjetFormComponent } from './projet-form/projet-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
 
 
 @NgModule({
@@ -25,14 +27,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponent,
     ProjetListComponent,
     ProjetDetailsComponent,
-    ProjetFormComponent
+    ProjetFormComponent,
+    HomeMaterielComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   
   providers: [],
