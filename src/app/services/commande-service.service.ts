@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CommandeServiceService {
-  private baseUrl = 'http://localhost:8091/Commande'; // URL via API Gateway
+  private baseUrl = 'http://localhost:8084/Commande'; 
 
   constructor(private http: HttpClient) {}
   getAllCommandes(): Observable<Commande[]> {

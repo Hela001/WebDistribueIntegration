@@ -7,26 +7,13 @@ import { CommandeEditComponent } from './commande-edit/commande-edit.component';
 import { CommandeListComponent } from './commande-list/commande-list.component';
 import { CommandedetailsComponent } from './commandedetails/commandedetails.component';
 import { FormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { TokenInterceptor } from './services/token-interceptor.service';
+import {  HttpClientModule } from '@angular/common/http';
+
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 
 
-export function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'http://localhost:8080',
-        realm: 'Commandekeycloak',
-        clientId: 'gateway',
-      },
-      initOptions: {
-        onLoad: 'login-required',
-        checkLoginIframe: false,
-      },
-    });
-}
+
 
 
 @NgModule({
@@ -47,17 +34,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
   ],
   providers: [
  
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },
+   
   ],
   bootstrap: [AppComponent]
 })
