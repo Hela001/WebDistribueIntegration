@@ -11,9 +11,12 @@ import { FactureListComponent } from './facture-list/facture-list.component';
 import { FactureAddComponent } from './facture-add/facture-add.component';
 import { FactureDetailsComponent } from './facture-details/facture-details.component';
 import { FactureEditComponent } from './facture-edit/facture-edit.component';
+import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
 
 const routes: Routes = [
-  { path: 'about', component: AboutComponent }, // Page "À propos"
+  { path: '', component: ProjetListComponent }, // Page d'accueil
+  { path: 'about', component: AboutComponent }, 
+  { path: 'materiel', component: HomeMaterielComponent }, // Page "À propos"
   { path: 'contact', component: ContactComponent }, // Page de contact
   { path: 'projets', component: ProjetListComponent },
   { path: 'projets/create', component: ProjetFormComponent },
@@ -23,10 +26,10 @@ const routes: Routes = [
   { path: 'factures/add', component: FactureAddComponent },
   { path: 'factures/:id', component: FactureDetailsComponent },
   { path: 'factures/edit/:id', component: FactureEditComponent },
-
+  { path: 'materiel', component: HomeMaterielComponent },
   //{ path: '', redirectTo: '/projets', pathMatch: 'full' },
- // { path: '', redirectTo: '/factures', pathMatch: 'full' },
- { path: '', component: ProjetListComponent }, // Page d'accueil
+  // { path: '', redirectTo: '/factures', pathMatch: 'full' },
+  { path: '', component: ProjetListComponent }, // Page d'accueil
   { path: '**', component: NotFoundComponent },
 
 

@@ -34,9 +34,30 @@
         <button routerLink="/projets/{{ projet.idProjet }}" class="btn btn-primary btn-sm">Voir</button>
         <button routerLink="/projets/edit/{{ projet.idProjet }}" class="btn btn-warning btn-sm">Modifier</button>
       </td>
+      <td>
+        <button class="btn btn-primary me-2" (click)="onProjectSelect(projet.idProjet)">Weather</button>
+      </td>
     </tr>
   </tbody>
 </table>
+<div *ngIf="showWeather && weatherForecast" class="weather-container d-flex justify-content-center mt-4">
+  <div class="weather-card d-flex p-4 rounded shadow-lg">
+    <div class="weather-icon me-4">
+      <!-- Use the FontAwesome icon class dynamically -->
+      <i [class]="weatherIconUrl" aria-hidden="true"></i>
+    </div>
+    <div class="weather-info">
+      <p><strong>Condition:</strong> {{ weatherForecast.condition }}</p>
+      <p><strong>Temperature:</strong> {{ weatherForecast.temperature }}°C</p>
+      <p><strong>Humidity:</strong> {{ weatherForecast.humidity }}%</p>
+      <p><strong>Wind:</strong> {{ weatherForecast.windSpeed }} km/h</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showWeather && !weatherForecast" class="alert alert-info text-center mt-4">
+  <p>No weather data available for this project.</p>
+</div>
 
 <!-- Pagination -->
 <div class="d-flex justify-content-center mt-3" *ngIf="totalPages > 1">

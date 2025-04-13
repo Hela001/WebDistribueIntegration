@@ -17,8 +17,8 @@ import { FactureListComponent } from './facture-list/facture-list.component';
 import { FactureAddComponent } from './facture-add/facture-add.component';
 import { FactureDetailsComponent } from './facture-details/facture-details.component';
 import { FactureEditComponent } from './facture-edit/facture-edit.component';
-
-
+import { CommonModule } from '@angular/common';
+import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
 
 @NgModule({
   declarations: [
@@ -35,15 +35,15 @@ import { FactureEditComponent } from './facture-edit/facture-edit.component';
     FactureAddComponent,
     FactureDetailsComponent,
     FactureEditComponent,
-
-    
+    HomeMaterielComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   
   providers: [],
