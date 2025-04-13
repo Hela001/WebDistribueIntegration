@@ -10,11 +10,22 @@ import { EquipeDialogComponent } from '../equipe-dialog/equipe-dialog.component'
   styleUrls: ['./equipe-list.component.css']
 })
 export class EquipeListComponent implements OnInit {
-showEquipeDetails(_t9: Equipe) {
-throw new Error('Method not implemented.');
-}
+  isLoading: boolean | undefined;
+
+
+
+showEquipeDetails(equipe: Equipe): void {
+  this.equipeService.getEquipeById(equipe.idEquipe).subscribe({
+    next: (data) => {
+      this.selectedEquipe = data;
+    },
+    error: (err) => {
+      console.error('Erreur lors de la récupération de l\'équipe:', err);
+    }
+  });}
   equipes: Equipe[] = [];
   errorMessage: string = '';
+selectedEquipe: Equipe | null = null;
 
   constructor(private equipeService: EquipeService, private dialog: MatDialog) {}
 
@@ -22,27 +33,36 @@ throw new Error('Method not implemented.');
     this.loadEquipes();
   }
 
-  loadEquipes(): void {
-    this.equipeService.getAllEquipes().subscribe({
-      next: (data) => this.equipes = data,
-      error: (error) => {
-        this.errorMessage = 'Erreur lors de la récupération des équipes.';
-        console.error(error);
-      }
-    });
-  }
+// When clicking Edit (without dialog)
+selectEquipe(equipe: Equipe): void {
+  this.selectedEquipe = equipe;
+}
+loadEquipes(): void {
+  this.isLoading = true;
+  this.equipeService.getAllEquipes().subscribe({
+    next: (data) => {
+      this.equipes = data;
+      this.isLoading = false;
+    },
+    error: (error) => {
+      this.errorMessage = 'Erreur lors de la récupération des équipes.';
+      this.isLoading = false;
+      console.error(error);
+    }
+  });
+}
 
-  // Open dialog for editing
-  editEquipe(equipe: Equipe): void {
-    const dialogRef = this.dialog.open(EquipeDialogComponent, {
-      data: { id: equipe.idEquipe },
-    });
+editEquipe(equipe: Equipe): void {
+  const dialogRef = this.dialog.open(EquipeDialogComponent, {
+    data: equipe, // pass the entire equipe object for editing
+    width: '500px', // optional: for better layout
+  });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.loadEquipes(); // refresh the list
-      }
-    });
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.loadEquipes(); // refresh list if edited
+    }
+  });
   }
 
   // Open dialog for creating a new equipe
@@ -57,11 +77,13 @@ throw new Error('Method not implemented.');
   }
 
   // Delete equipe
-  deleteEquipe(equipe: Equipe): void {
-    if (confirm(`Voulez-vous vraiment supprimer l’équipe "${equipe.nomEquipe}" ?`)) {
-      this.equipeService['deleteEquipe'](equipe.idEquipe).subscribe({
-        next: () => this.loadEquipes(),
-        error: (err: any) => console.error('Erreur suppression:', err)
+  deleteEquipe(id: number): void {
+    if (confirm('Are you sure you want to delete this equipe?')) {
+      this.equipeService.deleteEquipe(id).subscribe({
+        next: () => {
+          this.loadEquipes(); // Refresh the list after deletion
+        },
+        error: (err) => console.error('Error deleting equipe:', err)
       });
     }
   }

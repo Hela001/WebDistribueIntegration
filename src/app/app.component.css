@@ -9,12 +9,12 @@ mat-sidenav {
   background-color: #263238;
   width: 250px;
   transition: width 0.3s ease, background-color 0.3s ease;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); /* Adding subtle shadow to the sidenav */
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 mat-sidenav:hover {
-  width: 280px; /* Slightly larger width when hovered */
-  background-color: #1b262f; /* Darker background when hovered */
+  width: 280px; /* Slightly larger on hover */
+  background-color: #1b262f; /* Darker background on hover */
 }
 
 mat-toolbar {
@@ -22,7 +22,7 @@ mat-toolbar {
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
-  background-color: #34495e; /* Darker background for toolbar */
+  background-color: #34495e; /* Darker background */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid #c5e1e6; /* Soft border at the bottom */
 }
@@ -33,7 +33,7 @@ mat-toolbar {
   font-size: 24px;
   color: #ecf0f1;
   text-transform: uppercase;
-  letter-spacing: 2px; /* Spacing out the text */
+  letter-spacing: 2px;
 }
 
 /* Styling for sidenav items */
@@ -50,14 +50,8 @@ mat-nav-list {
 }
 
 .mat-list-item:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Soft hover effect */
-  padding-left: 20px; /* Indentation on hover */
-}
-
-/* Style for the menu text */
-.menu-text {
-  font-size: 16px;
-  margin-left: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
 }
 
 /* Enhancements for dropdown items in mat-menu */
@@ -66,13 +60,13 @@ mat-nav-list {
   background-color: #f5f5f5;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adding a soft shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item:hover {
-  background-color: #b0bec5; /* Subtle hover effect */
+  background-color: #b0bec5;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhance hover shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Equipe item style */
@@ -88,9 +82,9 @@ mat-nav-list {
 }
 
 .equipe-item:hover {
-  background-color: #f1f1f1; /* Hover effect for equipe items */
+  background-color: #f1f1f1;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Adding a shadow on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Equipe name and description */
@@ -108,7 +102,7 @@ mat-nav-list {
 
 /* Custom styling for the equipe menu */
 .custom-menu {
-  width: 350px; /* Larger width for better visibility */
+  width: 350px;
   font-size: 16px;
   padding: 10px 20px;
 }
@@ -121,14 +115,7 @@ mat-nav-list {
   margin-left: 10px;
 }
 
-/* Divider styling for better visual separation */
-mat-divider {
-  margin: 12px 0;
-  background-color: #b0bec5;
-}
-
-/* Styling for buttons */
-button.mat-button {
+.actions button {
   font-size: 14px;
   margin-right: 10px;
   color: #3498db;
@@ -136,8 +123,8 @@ button.mat-button {
   padding: 10px 12px;
 }
 
-button.mat-button:hover {
-  color: #1abc9c; /* Color change on hover */
+.actions button:hover {
+  color: #1abc9c;
 }
 
 button.mat-icon-button {
@@ -145,12 +132,12 @@ button.mat-icon-button {
   background-color: #3498db;
   padding: 10px;
   transition: background-color 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Adding shadow */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 button.mat-icon-button:hover {
-  background-color: #2980b9; /* Darker blue on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhance hover shadow */
+  background-color: #2980b9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Toast Notification Styling */
@@ -220,50 +207,12 @@ button.mat-icon-button:hover {
   }
 }
 
-.actions {
-  gap: 5px;
-}
-
-/* Enhancing Equipe Hover Effect */
-.equipe-item:hover {
-  background-color: #e3f2fd; /* Light blue background on hover */
-}
-
-.equipe-name {
-  font-size: 18px; /* Slightly larger font size for better visibility */
-  color: #263238;
-}
-
-.equipe-description {
-  color: #607d8b;
-  font-size: 15px;
-}
-
-/* Enhance the button colors for better contrast */
-button.mat-button {
-  color: #00796b; /* Teal color for the buttons */
-}
-
-button.mat-button:hover {
-  color: #004d40; /* Darker teal color on hover */
-}
-
-button.mat-icon-button.color-warn {
-  background-color: #f44336; /* Red for delete button */
-}
-
-button.mat-icon-button.color-primary {
-  background-color: #3498db; /* Blue for edit button */
-}
-
-/* Equipe Details Section */
 .equipe-details {
   padding: 20px;
   background-color: #f4f6f8;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  transition: all 0.3s ease-in-out;
 }
 
 .equipe-details h2 {
@@ -310,24 +259,6 @@ button.mat-icon-button.color-primary {
   font-size: 20px;
 }
 
-/* Sidebar Menu Styling */
-mat-nav-list {
-  padding-top: 20px;
-}
-
-mat-nav-list a {
-  color: #34495e;
-  font-size: 16px;
-  padding: 12px 20px;
-  transition: background-color 0.3s ease;
-}
-
-mat-nav-list a:hover {
-  background-color: #ecf0f1;
-  color: #3498db;
-}
-
-/* Active Item Styling */
 mat-nav-list a.active {
   background-color: #3498db;
   color: white;
@@ -349,38 +280,10 @@ mat-toolbar {
   flex: 1;
 }
 
-/* Equipe Menu Item Styling */
-.menu-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-.equipe-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.equipe-name {
-  font-weight: bold;
-}
-
-.equipe-description {
-  font-size: 14px;
-  color: #7f8c8d;
-}
-
-.equipe-actions {
-  display: flex;
-  gap: 8px;
-}
-
 .equipe-actions button {
   padding: 5px;
 }
 
-/* Equipe Details Section */
 .equipe-details {
   margin-top: 20px;
   padding: 16px;
@@ -394,4 +297,12 @@ mat-toolbar {
 
 .equipe-details p {
   font-size: 16px;
+}
+
+.equipe-details {
+  border: 1px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  margin: 16px;
 }

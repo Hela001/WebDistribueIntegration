@@ -37,39 +37,38 @@
   </mat-toolbar>
 
   <!-- Menu for Equipes -->
-  <mat-menu #equipeMenu="matMenu">
-    <!-- Loop through equipes to generate each menu item -->
-    <div *ngFor="let equipe of equipes" class="menu-item" (click)="showEquipeDetails(equipe)">
-      <div class="equipe-item">
-        <div class="equipe-name">{{ equipe.name }}</div> <!-- Updated to 'name' -->
-        <div class="equipe-description">{{ equipe.disponibilite }}</div> <!-- Updated to 'description' -->
-        <div class="equipe-actions">
-          <!-- You can add actions for each equipe, for example: -->
-          <button mat-button>Edit</button>
-          <button mat-button>Delete</button>
-        </div>
+<mat-menu #equipeMenu="matMenu">
+  <!-- Loop through equipes to generate each menu item -->
+  <div *ngFor="let equipe of equipes" class="menu-item" (click)="showEquipeDetails(equipe)">
+    <div class="equipe-item">
+      <div class="equipe-name">{{ equipe.name }}</div>
+      <div class="equipe-description">{{ equipe.disponibilite }}</div>
+      <div class="equipe-actions">
+        <button mat-button (click)="editEquipe(equipe)">Edit</button>
+        <button mat-button (click)="deleteEquipe(equipe)">Delete</button>
       </div>
     </div>
-
-    <!-- If there are no equipes, show a message -->
-    <div *ngIf="equipes.length === 0" class="no-equipes">
-      <p>No equipes available.</p>
-    </div>
-
-    <!-- Button for adding a new equipe -->
-    <button mat-menu-item (click)="openAddEquipeDialog()">
-      <mat-icon>add</mat-icon>
-      <span>Add Equipe</span>
-    </button>
-  </mat-menu>
-
-  <!-- Equipe List Component -->
-  <app-equipe-list></app-equipe-list>
-
-  <!-- Equipe Details Section -->
-  <div *ngIf="selectedEquipe" class="equipe-details">
-    <h2>Equipe Details</h2>
-    <p><strong>Name:</strong> {{ selectedEquipe.name }}</p> <!-- Updated to 'name' -->
-    <p><strong>Description:</strong> {{ selectedEquipe.description }}</p> <!-- Updated to 'description' -->
   </div>
-</mat-sidenav-container>
+
+  <div *ngIf="equipes.length === 0" class="no-equipes">
+    <p>No equipes available.</p>
+  </div>
+</mat-menu>
+
+<!-- 🔼 Add Equipe Button (Outside the Menu & Visible at the Top) -->
+<div style="padding: 16px;">
+  <button mat-raised-button color="primary" (click)="openAddEquipeDialog()">
+    <mat-icon>add</mat-icon>
+    Ajouter une Équipe
+  </button>
+</div>
+
+<!-- Équipe List -->
+<app-equipe-list></app-equipe-list>
+
+<!-- Équipe Details Section -->
+<div *ngIf="selectedEquipe" class="equipe-details" style="padding: 16px;">
+  <h2>Détails de l'Équipe</h2>
+  <p><strong>Nom:</strong> {{ selectedEquipe.name }}</p>
+  <p><strong>Description:</strong> {{ selectedEquipe.description }}</p>
+</div>

@@ -3,7 +3,12 @@
   <div class="chat-box">
     <!-- Display Chat History -->
     <div *ngFor="let msg of chatHistory" class="message" [ngClass]="msg.sender">
-      <strong>{{ msg.sender }}:</strong> {{ msg.message }}
+      <div class="message-header">
+        <!-- Add Bot Avatar here -->
+        <img *ngIf="msg.sender === 'bot'" class="bot-avatar" src="https://via.placeholder.com/30" alt="Chatbot Avatar" />
+        <strong>{{ msg.sender }}:</strong>
+      </div>
+      <div>{{ msg.message }}</div>
     </div>
   </div>
 

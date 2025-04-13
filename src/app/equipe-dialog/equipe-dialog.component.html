@@ -1,21 +1,19 @@
 <h1 mat-dialog-title class="form-title">Equipe Form</h1>
 
 <mat-dialog-content>
-  <form #equipeForm="ngForm" (ngSubmit)="onSubmit()" class="form-container">
+  <form [formGroup]="equipeForm" (ngSubmit)="onSubmit()" class="form-container">
 
     <!-- nomEquipe -->
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Nom Equipe</mat-label>
       <input
         matInput
-        [(ngModel)]="equipe.nomEquipe"
-        name="nomEquipe"
-        required
-        #nom="ngModel"
+        formControlName="nomEquipe"
         class="input-field"
+        required
       />
     </mat-form-field>
-    <div *ngIf="equipeForm.submitted && !nom.valid" class="error-message">
+    <div *ngIf="equipeForm.get('nomEquipe')?.invalid && equipeForm.get('nomEquipe')?.touched" class="error-message">
       Le nom de l'équipe est requis.
     </div>
 
@@ -24,23 +22,21 @@
       <mat-label>Disponibilité</mat-label>
       <textarea
         matInput
+        formControlName="disponibilite"
         placeholder="Saisir la disponibilité"
-        [(ngModel)]="equipe.disponibilite"
-        name="disponibilite"
-        required
-        #dispo="ngModel"
         rows="6"
-        class="input-field">
+        class="input-field"
+        required>
       </textarea>
     </mat-form-field>
-    <div *ngIf="equipeForm.submitted && !dispo.valid" class="error-message">
+    <div *ngIf="equipeForm.get('disponibilite')?.invalid && equipeForm.get('disponibilite')?.touched" class="error-message">
       La disponibilité est requise.
     </div>
 
     <!-- Buttons -->
     <mat-dialog-actions align="end">
       <button mat-button type="button" (click)="onClose()" class="cancel-button">Cancel</button>
-      <button mat-flat-button color="primary" type="submit" [disabled]="!equipeForm.form.valid" class="save-button">Save</button>
+      <button mat-flat-button color="primary" type="submit" [disabled]="!equipeForm.valid" class="save-button">Save</button>
     </mat-dialog-actions>
 
   </form>

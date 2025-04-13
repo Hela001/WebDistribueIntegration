@@ -95,15 +95,14 @@ equipeMenu: MatMenuPanel<any> | null | undefined;
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Call the backend to create the new equipe
-        this.backendService.createEquipe(result).subscribe(createdEquipe => {
-          this.equipes.push(createdEquipe);  // Add the new equipe to the list
-          this.toastr.success('Nouvelle équipe ajoutée avec succès !', 'Succès');
-          console.log('New equipe added:', createdEquipe);
-        });
+        // ✅ The dialog already called backendService.createEquipe and returned the created object
+        this.equipes.push(result); // Just add it to the list
+        this.toastr.success('Nouvelle équipe ajoutée avec succès !', 'Succès');
+        console.log('New equipe added:', result);
       }
     });
-  }
+      }
+    
 
   editEquipe(equipe: Equipe): void {
     console.log('Editing equipe:', equipe); // Check if equipe.id is defined
