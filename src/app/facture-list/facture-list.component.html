@@ -1,0 +1,58 @@
+<div *ngIf="loading" class="alert alert-info text-center">Chargement des factures...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+<div *ngIf="factures.length === 0 && !loading" class="alert alert-warning text-center">
+  Aucune facture trouvé.
+</div>
+
+<!-- Filtrage par numéro -->
+<div class="row mb-3">
+  <div class="col-md-6">
+    <div class="input-group">
+      <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Rechercher par numéro...">
+      <button class="btn btn-outline-secondary" type="button" (click)="searchByNumero()">Rechercher</button>
+    </div>
+  </div>
+
+<!-- Bouton de création de facture -->
+<div class="container mt-4">
+    <h2>Liste des Factures</h2>
+      <div class="col-md-6 text-end">
+        <button routerLink="/factures/add" class="btn btn-success">Nouvelle Facture</button>
+      </div>
+    </div>
+
+  <!-- Table des factures -->
+    <table *ngIf="factures.length > 0" class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Numéro</th>
+          <th scope="col">Date</th>
+          <th scope="col">Statut</th>
+          <th scope="col">Montant Total</th>
+          <th scope="col">Mode de Paiement</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let facture of factures">
+          <td>{{ facture.numero_facture }}</td>
+          <td>{{ facture.date_facture | date:'dd/MM/yyyy' }}</td>
+          <td>{{ facture.statut }}</td>
+          <td>{{ facture.montant_total | currency:'EUR':'symbol' }}</td>
+          <td>{{ facture.mode_payement }}</td>
+          <td>
+            <button routerLink="/factures/{{ facture.id_facture }}" class="btn btn-primary btn-sm">Détails</button>
+            <button routerLink="/factures/edit/{{ facture.id_facture }}" class="btn btn-warning btn-sm">Modifier</button>
+            <button (click)="deleteFacture(facture.id_facture)" class="btn btn-danger btn-sm me-1">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Pagination -->
+<div class="d-flex justify-content-center mt-3" *ngIf="totalPages > 1">
+  <button (click)="changePage(page - 1)" [disabled]="page === 0" class="btn btn-secondary btn-sm me-2">Précédent</button>
+  <span class="align-self-center">Page {{ page + 1 }} sur {{ totalPages }}</span>
+  <button (click)="changePage(page + 1)" [disabled]="page === totalPages - 1" class="btn btn-secondary btn-sm ms-2">Suivant</button>
+</div>

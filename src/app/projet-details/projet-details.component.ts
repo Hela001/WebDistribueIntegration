@@ -12,7 +12,8 @@ import { jsPDF } from 'jspdf';
 export class ProjetDetailsComponent implements OnInit {
   projet!: Projet;
 
-  constructor(private route: ActivatedRoute, private projetService: ProjetService) {}
+  constructor(private route: ActivatedRoute,
+     private projetService: ProjetService) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));

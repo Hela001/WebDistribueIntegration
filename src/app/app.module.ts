@@ -13,6 +13,10 @@ import { ProjetDetailsComponent } from './projet-details/projet-details.componen
 import { ProjetFormComponent } from './projet-form/projet-form.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FactureListComponent } from './facture-list/facture-list.component';
+import { FactureAddComponent } from './facture-add/facture-add.component';
+import { FactureDetailsComponent } from './facture-details/facture-details.component';
+import { FactureEditComponent } from './facture-edit/facture-edit.component';
 import { CommonModule } from '@angular/common';
 import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,6 +40,7 @@ import { GestionDialogComponent } from './gestion-dialog/gestion-dialog.componen
 import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
 import { EquipeListComponent } from './equipe-list/equipe-list.component';
 
+
 // Services
 import { BackendService } from './backend.service';
 import { ToastrModule } from 'ngx-toastr';
@@ -52,6 +57,10 @@ import { HomeEquipeComponent } from './home-equipe/home-equipe.component';
     ProjetListComponent,
     ProjetDetailsComponent,
     ProjetFormComponent,
+    FactureListComponent,
+    FactureAddComponent,
+    FactureDetailsComponent,
+    FactureEditComponent,
     HomeMaterielComponent 
     GestionDialogComponent,
     ChatDialogComponent,
