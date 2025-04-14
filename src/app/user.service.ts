@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8087/api/users';
+  private apiUrl = 'http://localhost:8090/api/users';
 
   constructor(private http: HttpClient, private router: Router) { }
 
