@@ -1,0 +1,79 @@
+/* Styling for the dialog form */
+.form-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form container */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between form fields */
+  padding: 20px;
+  min-width: 400px; /* Increased width for better visibility */
+  max-width: 600px; /* Max width for bigger display */
+}
+
+/* Full-width input fields */
+.full-width {
+  width: 100%;
+}
+
+/* Input and textarea fields */
+.input-field {
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+/* Styling for error messages */
+.error-message {
+  color: #f44336;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Styling for buttons */
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.cancel-button,
+.save-button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+/* Styling for the Cancel button */
+.cancel-button {
+  background-color: #f5f5f5;
+  color: #757575;
+  border: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Styling for the Save button */
+.save-button {
+  background-color: #3498db;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:disabled {
+  background-color: #b0bec5;
+}
+
+.save-button:hover {
+  background-color: #2980b9;
+}

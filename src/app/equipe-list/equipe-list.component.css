@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    gap: 24px;
+    padding: 16px;
+  }
+  
+  .details-card {
+    flex: 2;
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  
+  .menu-container {
+    flex: 1;
+  }
+  
+  .equipe-item {
+    margin-bottom: 12px;
+  }
+  
+  .equipe-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
+  }
+  
+  .equipe-item-content:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .equipe-info {
+    text-align: left;
+  }
+  
+  .equipe-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
