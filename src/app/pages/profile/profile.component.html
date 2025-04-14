@@ -1,0 +1,81 @@
+<!--<div class="container mt-5">
+    <div class="card shadow-lg mx-auto" style="max-width: 500px;">
+      <div class="card-header bg-primary text-white text-center">
+        <h4 class="mb-0">Profil de l'utilisateur</h4>
+      </div>
+      <div class="card-body" *ngIf="user; else loading">
+        <div class="mb-3">
+          <strong>Nom :</strong> {{ user.nomU }}
+        </div>
+        <div class="mb-3">
+          <strong>Prénom :</strong> {{ user.prenomU }}
+        </div>
+        <div class="mb-3">
+          <strong>Email :</strong> {{ user.emailU }}
+        </div>
+        <div class="mb-3">
+          <strong>Numéro de téléphone :</strong> {{ user.numtel }}
+        </div>
+        <div class="mb-3">
+          <strong>Salaire :</strong> {{ user.salaireU | currency:'EUR':'symbol-narrow' }}
+        </div>
+        <div class="mb-3">
+          <strong>Rôle :</strong> {{ user.role }}
+        </div>
+      </div>
+  
+      <ng-template #loading>
+        <div class="text-center p-4">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Chargement...</span>
+          </div>
+          <p class="mt-2">Chargement du profil...</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>-->
+  <div class="container mt-5">
+    <div class="card shadow-lg mx-auto" style="max-width: 500px;">
+      <div class="card-header bg-primary text-white text-center">
+        <h4 class="mb-0">Profil de l'utilisateur</h4>
+      </div>
+      <div class="card-body" *ngIf="user; else loading">
+        <div class="mb-3">
+          <strong>Nom :</strong> {{ user.nomU }}
+        </div>
+        <div class="mb-3">
+          <strong>Prénom :</strong> {{ user.prenomU }}
+        </div>
+        <div class="mb-3">
+          <strong>Email :</strong> {{ user.emailU }}
+        </div>
+        <div class="mb-3">
+          <strong>Numéro de téléphone :</strong> {{ user.numtel }}
+        </div>
+        <div class="mb-3">
+          <strong>Salaire :</strong> {{ user.salaireU | currency:'EUR':'symbol-narrow' }}
+        </div>
+        <div class="mb-3">
+          <strong>Rôle :</strong> {{ user.role }}
+        </div>
+  
+        <!-- Si l'utilisateur est connecté via Google -->
+        <div *ngIf="isGoogleUser" class="mb-3">
+          <strong>Authentifié par Google</strong>
+          <br>
+         
+        </div>
+      </div>
+  
+      <ng-template #loading>
+        <div class="text-center p-4">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Chargement...</span>
+          </div>
+          <p class="mt-2">Chargement du profil...</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
+  

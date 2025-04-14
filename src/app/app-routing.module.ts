@@ -19,7 +19,11 @@ import { CommandeEditComponent } from './commande-edit/commande-edit.component';
 import { CommandeListComponent } from './commande-list/commande-list.component';
 import { CommandedetailsComponent } from './commandedetails/commandedetails.component';
 import { CommandeAddComponent } from './commande-add/commande-add.component';
-
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AdminGuard } from './auth/admin.guard';
 const routes: Routes = [
   { path: 'commandes', component: CommandeListComponent },
   { path: 'commandes/:id', component: CommandedetailsComponent },
@@ -41,6 +45,13 @@ const routes: Routes = [
   //{ path: '', redirectTo: '/projets', pathMatch: 'full' },
   // { path: '', redirectTo: '/factures', pathMatch: 'full' },
   { path: '', component: ProjetListComponent }, // Page d'accueil
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'profile', component: ProfileComponent },
+  /*{ path: 'dashboard', component: DashboardComponent },*/
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
+
+  { path: 'login', component: LoginComponent },
   { path: '**', component: NotFoundComponent },
   { path: 'equipe', component: EquipeDialogComponent },
   { path: 'chat', component: ChatComponent },
@@ -48,18 +59,16 @@ const routes: Routes = [
 
   { path: '', redirectTo: '/commandes', pathMatch: 'full' },
 
-
-  { path: '', redirectTo: '/equipe', pathMatch: 'full' },
-  { path: '', redirectTo: '/projets', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent } // Pour toute autre route inconnue
 
-
 ];
+  @NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+  export class AppRoutingModule { }
+
 
 

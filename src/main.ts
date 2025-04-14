@@ -13,3 +13,4 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 bootstrapApplication(AppComponent, {
     providers: [provideHttpClient()] // Enable HTTP client
   });
+
