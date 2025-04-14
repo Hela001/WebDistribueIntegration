@@ -13,6 +13,8 @@ import { ProjetDetailsComponent } from './projet-details/projet-details.componen
 import { ProjetFormComponent } from './projet-form/projet-form.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -50,6 +52,7 @@ import { HomeEquipeComponent } from './home-equipe/home-equipe.component';
     ProjetListComponent,
     ProjetDetailsComponent,
     ProjetFormComponent,
+    HomeMaterielComponent 
     GestionDialogComponent,
     ChatDialogComponent,
     EquipeListComponent,
@@ -62,6 +65,7 @@ import { HomeEquipeComponent } from './home-equipe/home-equipe.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule
     BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
