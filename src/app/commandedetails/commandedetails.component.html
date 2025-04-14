@@ -1,0 +1,9 @@
+<h2>Détails de la Commande</h2>
+<div *ngIf="commande" class="commande-details">
+  <p><strong>ID:</strong> <span>{{ commande.id }}</span></p>
+  <p><strong>Statut:</strong> <span>{{ commande.statut }}</span></p>
+  <p><strong>Date:</strong> <span>{{ commande.dateCommande | date:'short' }}</span></p>
+  <p><strong>Total:</strong> <span>{{ commande.total }} dt</span></p>
+  <p><strong>Notes:</strong> <span>{{ commande.notes }}</span></p>
+  <button class="btn-back" (click)="goBack()">Retour</button>
+</div>

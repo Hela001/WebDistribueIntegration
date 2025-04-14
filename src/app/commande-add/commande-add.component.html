@@ -1,0 +1,31 @@
+<h2>Nouvelle Commande</h2>
+<form (ngSubmit)="submit()" class="commande-form">
+  <div class="form-group">
+    <label for="statut">Statut :</label>
+    <select [(ngModel)]="commande.statut" name="statut" id="statut" required>
+      <option *ngFor="let status of ['Preparation', 'EnCours', 'Livré']" [value]="status">{{ status }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="total">Total :</label>
+    <input type="number" [(ngModel)]="commande.total" name="total" id="total" required>
+  </div>
+
+  <div class="form-group">
+    <label for="remise">Remise :</label>
+    <input type="number" [(ngModel)]="commande.remise" name="remise" id="remise">
+  </div>
+
+  <div class="form-group">
+    <label for="dateLivraisonEstimee">Date de Livraison Estimée :</label>
+    <input type="date" [(ngModel)]="commande.dateLivraisonEstimee" name="dateLivraisonEstimee" id="dateLivraisonEstimee">
+  </div>
+
+  <div class="form-group">
+    <label for="notes">Notes :</label>
+    <textarea [(ngModel)]="commande.notes" name="notes" id="notes"></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit">Créer</button>
+</form>
