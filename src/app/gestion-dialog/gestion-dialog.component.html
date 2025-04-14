@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Gestion Equipe</h2>
+
+<mat-dialog-content>
+  <!-- Equipe List -->
+  <ul *ngIf="data.equipes && data.equipes.length > 0">
+    <li *ngFor="let equipe of data.equipes" [ngClass]="{
+        'active': equipe.status === 'Active',
+        'inactive': equipe.status === 'Inactive',
+        'pending': equipe.status === 'Pending',
+        'archived': equipe.status === 'Archived',
+        'unknown': !equipe.status
+      }">
+      {{ equipe.name }}
+      <span *ngIf="equipe.status">{{ equipe.status }}</span>
+      <span *ngIf="!equipe.status">Unknown</span>
+      <button mat-icon-button color="primary" (click)="editEquipe(equipe)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteEquipe(equipe)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </li>
+  </ul>
+
+  <!-- No equipes message -->
+  <p *ngIf="data.equipes && data.equipes.length === 0">No equipes available.</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()">Close</button>
+</mat-dialog-actions>

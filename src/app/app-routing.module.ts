@@ -7,6 +7,9 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProjetListComponent } from './projet-list/projet-list.component';
 import { ProjetDetailsComponent } from './projet-details/projet-details.component';
 import { ProjetFormComponent } from './projet-form/projet-form.component';
+import { ChatComponent } from './chat/chat.component';  // Ensure you have the ChatComponent
+import { EquipeDialogComponent } from './equipe-dialog/equipe-dialog.component';
+import { HomeEquipeComponent } from './home-equipe/home-equipe.component';
 
 const routes: Routes = [
   { path: '', component: ProjetListComponent }, // Page d'accueil
@@ -16,8 +19,15 @@ const routes: Routes = [
   { path: 'projets/create', component: ProjetFormComponent },
   { path: 'projets/:id', component: ProjetDetailsComponent },
   { path: 'projets/edit/:id', component: ProjetFormComponent },
+  { path: 'equipe', component: EquipeDialogComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'home-equipe', component: HomeEquipeComponent },
+
+  { path: '', redirectTo: '/equipe', pathMatch: 'full' },
   { path: '', redirectTo: '/projets', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent } // Pour toute autre route inconnue
+
+
 ];
 
 @NgModule({
