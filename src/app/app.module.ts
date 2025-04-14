@@ -11,7 +11,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProjetListComponent } from './projet-list/projet-list.component';
 import { ProjetDetailsComponent } from './projet-details/projet-details.component';
 import { ProjetFormComponent } from './projet-form/projet-form.component';
-import { HttpClientModule } from '@angular/common/http';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FactureListComponent } from './facture-list/facture-list.component';
 import { FactureAddComponent } from './facture-add/facture-add.component';
@@ -19,6 +19,32 @@ import { FactureDetailsComponent } from './facture-details/facture-details.compo
 import { FactureEditComponent } from './facture-edit/facture-edit.component';
 import { CommonModule } from '@angular/common';
 import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Angular Material Modules
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+
+// Toastr
+
+// Custom components
+import { GestionDialogComponent } from './gestion-dialog/gestion-dialog.component';
+import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
+import { EquipeListComponent } from './equipe-list/equipe-list.component';
+
+
+// Services
+import { BackendService } from './backend.service';
+import { ToastrModule } from 'ngx-toastr';
+import { HomeEquipeComponent } from './home-equipe/home-equipe.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +62,11 @@ import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
     FactureDetailsComponent,
     FactureEditComponent,
     HomeMaterielComponent 
+    GestionDialogComponent,
+    ChatDialogComponent,
+    EquipeListComponent,
+    HomeEquipeComponent
+    // EquipeDialogComponent (décommenter si besoin)
   ],
   imports: [
     BrowserModule,
@@ -44,9 +75,24 @@ import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
     FormsModule,
     ReactiveFormsModule,
     CommonModule
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
+   
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
-  
-  providers: [],
+  providers: [BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

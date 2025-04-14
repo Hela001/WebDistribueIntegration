@@ -12,6 +12,9 @@ import { FactureAddComponent } from './facture-add/facture-add.component';
 import { FactureDetailsComponent } from './facture-details/facture-details.component';
 import { FactureEditComponent } from './facture-edit/facture-edit.component';
 import { HomeMaterielComponent } from './home-materiel/home-materiel.component';
+import { ChatComponent } from './chat/chat.component';  // Ensure you have the ChatComponent
+import { EquipeDialogComponent } from './equipe-dialog/equipe-dialog.component';
+import { HomeEquipeComponent } from './home-equipe/home-equipe.component';
 
 const routes: Routes = [
   { path: '', component: ProjetListComponent }, // Page d'accueil
@@ -31,6 +34,13 @@ const routes: Routes = [
   // { path: '', redirectTo: '/factures', pathMatch: 'full' },
   { path: '', component: ProjetListComponent }, // Page d'accueil
   { path: '**', component: NotFoundComponent },
+  { path: 'equipe', component: EquipeDialogComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'home-equipe', component: HomeEquipeComponent },
+
+  { path: '', redirectTo: '/equipe', pathMatch: 'full' },
+  { path: '', redirectTo: '/projets', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent } // Pour toute autre route inconnue
 
 
 ];

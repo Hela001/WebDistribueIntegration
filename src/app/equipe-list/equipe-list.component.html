@@ -1,0 +1,44 @@
+<!-- Full Container -->
+<div class="container">
+
+  <!-- 🧾 Left: Equipe Details -->
+  <div class="details-card">
+    <h2>Equipe Details</h2>
+    <p><strong>Name:</strong> {{ selectedEquipe?.nomEquipe || 'N/A' }}</p>
+    <p><strong>Disponibilité:</strong> {{ selectedEquipe?.disponibilite || 'N/A' }}</p>
+  </div>
+
+  <!-- 📋 Right: Equipe List Menu -->
+  <div class="menu-container">
+
+    <!-- Error message -->
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+
+    <!-- Menu content directly displayed (or wrap it in a dropdown if needed) -->
+    <ng-container *ngIf="equipes.length === 0; else equipeList">
+      <p>Aucune équipe disponible</p>
+    </ng-container>
+
+    <ng-template #equipeList>
+      <div *ngFor="let equipe of equipes" class="equipe-item">
+        <div class="equipe-item-content" (click)="showEquipeDetails(equipe)">
+          <div class="equipe-info">
+            <strong>{{ equipe.nomEquipe }}</strong><br />
+            <small>{{ equipe.disponibilite }}</small>
+          </div>
+          <div class="equipe-actions">
+            <button mat-icon-button (click)="editEquipe(equipe); $event.stopPropagation()" matTooltip="Modifier">
+              ✏️
+            </button>
+            <button mat-icon-button (click)="deleteEquipe(equipe.idEquipe); $event.stopPropagation()" matTooltip="Supprimer">
+              🗑️
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
