@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "webdistribue": {
+    "rahma": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/webdistribue",
+            "outputPath": "dist/rahma",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,6 +25,9 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -58,12 +61,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {},
           "configurations": {
             "production": {
-              "browserTarget": "webdistribue:build:production"
+              "browserTarget": "rahma:build:production"
             },
             "development": {
-              "browserTarget": "webdistribue:build:development"
+              "browserTarget": "rahma:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +75,8 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "webdistribue:build"
+            "browserTarget": "MSFrontend:build"          }
+    
           }
         },
         "test": {
@@ -87,15 +92,16 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
           }
         }
       }
+    },
+    "cli": {
+      "analytics": "e76876bf-82a5-44cb-aca9-8b8772978555"
     }
-  },
-  "cli": {
-    "analytics": "d6154c0e-a7fd-4939-8b66-cc260cb0ac4c"
-  }
+  
 }

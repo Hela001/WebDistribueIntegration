@@ -1,0 +1,15 @@
+<div *ngIf="projet" class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-center">{{ projet.nom }}</h2>
+        <p><strong>Description:</strong> {{ projet.description }}</p>
+        <p><strong>Status:</strong> <span [ngClass]="{'text-success': projet.status === 'DONE', 'text-warning': projet.status === 'DOING', 'text-danger': projet.status === 'TODO'}">{{ projet.status }}</span></p>
+        <p><strong>Date de début:</strong> {{ projet.dateDebut | date }}</p>
+        <p><strong>Date de fin prévue:</strong> {{ projet.dateFinPrevue | date }}</p>
+  
+        <!-- Export to PDF Button -->
+        <button (click)="exportToPdf()" class="btn btn-primary d-block mx-auto mt-3">Exporter en PDF</button>
+      </div>
+    </div>
+  </div>
+  

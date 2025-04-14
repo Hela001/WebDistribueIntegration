@@ -1,0 +1,72 @@
+<div *ngIf="loading" class="alert alert-info text-center">Chargement des projets...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+<div *ngIf="projets.length === 0 && !loading" class="alert alert-warning text-center">
+  Aucun projet trouvé.
+</div>
+
+<!-- Filtrage par statut -->
+<div class="mb-3">
+  <label for="status" class="form-label">Filtrer par statut:</label>
+  <select id="status" class="form-select" [(ngModel)]="selectedStatus" (change)="onStatusChange(selectedStatus)">
+    <option [ngValue]="null">Tous</option>
+    <option *ngFor="let status of statusList" [ngValue]="status">{{ status }}</option>
+  </select>
+</div>
+
+<!-- Table des projets -->
+<table *ngIf="projets.length > 0" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let projet of projets">
+      <td>{{ projet.nom }}</td>
+      <td>{{ projet.description }}</td>
+      <td>{{ projet.status }}</td>
+      <td>
+        <button (click)="deleteProjet(projet.idProjet)" class="btn btn-danger btn-sm">Supprimer</button>
+        <button routerLink="/projets/{{ projet.idProjet }}" class="btn btn-primary btn-sm">Voir</button>
+        <button routerLink="/projets/edit/{{ projet.idProjet }}" class="btn btn-warning btn-sm">Modifier</button>
+      </td>
+      <td>
+        <button class="btn btn-primary me-2" (click)="onProjectSelect(projet.idProjet)">Weather</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="showWeather && weatherForecast" class="weather-container d-flex justify-content-center mt-4">
+  <div class="weather-card d-flex p-4 rounded shadow-lg">
+    <div class="weather-icon me-4">
+      <!-- Use the FontAwesome icon class dynamically -->
+      <i [class]="weatherIconUrl" aria-hidden="true"></i>
+    </div>
+    <div class="weather-info">
+      <p><strong>Condition:</strong> {{ weatherForecast.condition }}</p>
+      <p><strong>Temperature:</strong> {{ weatherForecast.temperature }}°C</p>
+      <p><strong>Humidity:</strong> {{ weatherForecast.humidity }}%</p>
+      <p><strong>Wind:</strong> {{ weatherForecast.windSpeed }} km/h</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showWeather && !weatherForecast" class="alert alert-info text-center mt-4">
+  <p>No weather data available for this project.</p>
+</div>
+
+<!-- Pagination -->
+<div class="d-flex justify-content-center mt-3" *ngIf="totalPages > 1">
+  <button (click)="changePage(page - 1)" [disabled]="page === 0" class="btn btn-secondary btn-sm me-2">Précédent</button>
+  <span class="align-self-center">Page {{ page + 1 }} sur {{ totalPages }}</span>
+  <button (click)="changePage(page + 1)" [disabled]="page === totalPages - 1" class="btn btn-secondary btn-sm ms-2">Suivant</button>
+</div>
+
+<!-- Bouton de création de projet -->
+<div class="text-center mt-4">
+  <button routerLink="/projets/create" class="btn btn-success">Créer un projet</button>
+</div>

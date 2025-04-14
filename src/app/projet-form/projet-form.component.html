@@ -1,0 +1,85 @@
+<div class="container mt-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="card-title text-center">{{ isEdit ? 'Modifier le projet' : 'Créer un projet' }}</h2>
+        
+        <form [formGroup]="projetForm" (ngSubmit)="onSubmit()" novalidate>
+          <!-- Champ pour le Nom -->
+          <div class="mb-3">
+            <label for="nom" class="form-label">Nom *</label>
+            <input
+              id="nom"
+              formControlName="nom"
+              class="form-control"
+              [ngClass]="{'is-invalid': projetForm.get('nom')?.invalid && projetForm.get('nom')?.touched}"
+            />
+            <div *ngIf="projetForm.get('nom')?.invalid && projetForm.get('nom')?.touched" class="invalid-feedback">
+              <span *ngIf="projetForm.get('nom')?.errors?.['required']">Le nom est requis</span>
+              <span *ngIf="projetForm.get('nom')?.errors?.['maxlength']">Maximum 100 caractères</span>
+            </div>
+          </div>
+  
+          <!-- Champ pour la Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              class="form-control"
+              rows="4"
+              [ngClass]="{'is-invalid': projetForm.get('description')?.invalid && projetForm.get('description')?.touched}"
+            ></textarea>
+            <div *ngIf="projetForm.get('description')?.invalid && projetForm.get('description')?.touched" class="invalid-feedback">
+              Maximum 500 caractères
+            </div>
+          </div>
+  
+          <!-- Champ pour le Statut -->
+          <div class="mb-3">
+            <label for="status" class="form-label">Statut *</label>
+            <select 
+              id="status" 
+              formControlName="status" 
+              class="form-select"
+              [ngClass]="{'is-invalid': projetForm.get('status')?.invalid && projetForm.get('status')?.touched}"
+            >
+              <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+            </select>
+            <div *ngIf="projetForm.get('status')?.invalid && projetForm.get('status')?.touched" class="invalid-feedback">
+              Le statut est requis
+            </div>
+          </div>
+ 
+  <!-- Location -->
+  <div class="mb-4">
+    <label for="map" class="form-label">Location</label>
+    <div id="map" style="height: 400px;"></div>
+  </div>
+
+  <!-- Latitude and Longitude -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <label for="latitude" class="form-label">Latitude</label>
+      <input id="latitude" formControlName="latitude" class="form-control" type="text" readonly />
+    </div>
+    <div class="col-md-6">
+      <label for="longitude" class="form-label">Longitude</label>
+      <input id="longitude" formControlName="longitude" class="form-control" type="text" readonly />
+    </div>
+  </div>
+
+  
+          <!-- Boutons -->
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-outline-secondary me-md-2" (click)="navigateToHome()">
+              Annuler
+            </button>
+            <button type="submit" class="btn btn-primary">
+              {{ isEdit ? 'Mettre à jour' : 'Créer' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

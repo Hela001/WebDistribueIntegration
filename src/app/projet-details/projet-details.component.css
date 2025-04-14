@@ -1,0 +1,45 @@
+.projet-details {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .projet-title {
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .projet-info {
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  .status-active {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .status-inactive {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .export-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .export-btn:hover {
+    background-color: #0056b3;
+  }
+  
