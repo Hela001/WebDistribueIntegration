@@ -1,0 +1,68 @@
+<div class="register-container">
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="register-form p-4 shadow rounded">
+      <h2 class="text-center mb-4">Créer un compte</h2>
+  
+      <div class="mb-3">
+        <label for="nomU" class="form-label">Nom</label>
+        <input type="text" id="nomU" name="nomU" class="form-control" ngModel required minlength="3" />
+        <div *ngIf="registerForm.submitted && registerForm.form.controls['nomU']?.invalid" class="text-danger small">
+          Le nom est requis et doit avoir au moins 3 caractères.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="prenomU" class="form-label">Prénom</label>
+        <input type="text" id="prenomU" name="prenomU" class="form-control" ngModel required minlength="3" />
+        <div *ngIf="registerForm.submitted && registerForm.form.controls['prenomU']?.invalid" class="text-danger small">
+          Le prénom est requis et doit avoir au moins 3 caractères.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="emailU" class="form-label">Email</label>
+        <input type="email" id="emailU" name="emailU" class="form-control" ngModel required email />
+        <div *ngIf="registerForm.submitted && registerForm.form.controls['emailU']?.invalid" class="text-danger small">
+          L'email est requis et doit être un format valide.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="motdepasseU" class="form-label">Mot de passe</label>
+        <input type="password" id="motdepasseU" name="motdepasseU" class="form-control" ngModel required minlength="6" />
+        <div *ngIf="registerForm.submitted && registerForm.form.controls['motdepasseU']?.invalid" class="text-danger small">
+          Le mot de passe est requis et doit avoir au moins 6 caractères.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="numtel" class="form-label">Numéro de téléphone</label>
+        <input type="text" id="numtel" name="numtel" class="form-control" ngModel required pattern="^[0-9]{8}$" />
+        <div *ngIf="registerForm.submitted && registerForm.form.controls['numtel']?.invalid" class="text-danger small">
+          Le numéro de téléphone doit comporter exactement 8 chiffres.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="role" class="form-label">Rôle</label>
+        <input type="text" id="role" name="role" class="form-control bg-light" [value]="defaultRole" readonly />
+      </div>
+  
+      <div class="mb-3">
+        <label for="salaireU" class="form-label">Salaire</label>
+        <input type="number" id="salaireU" name="salaireU" class="form-control bg-light" [value]="defaultSalaire" readonly />
+      </div>
+      <!-- reCAPTCHA Widget -->
+    <div class="mt-3">
+      <re-captcha
+        [siteKey]="siteKey"
+        (resolved)="resolvedCaptcha($event)">
+      </re-captcha>
+      <div *ngIf="!captchaResponse" class="text-danger mt-2">
+        Veuillez valider le reCAPTCHA.
+      </div>
+    </div>
+  
+      <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+    </form>
+  </div>
+  

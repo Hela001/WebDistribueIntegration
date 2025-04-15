@@ -1,0 +1,48 @@
+<div class="container mt-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h4 class="mb-0">📊 Tableau de bord - Liste des utilisateurs</h4>
+      <span class="badge bg-light text-dark px-3 py-2">Total : {{ users.length }}</span>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Email</th>
+              <th scope="col">Téléphone</th>
+              <th scope="col">Salaire</th>
+              <th scope="col">Rôle</th>
+              <th scope="col">Actions</th> <!-- Ajout d'une colonne pour les actions -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.nomU }}</td>
+              <td>{{ user.prenomU }}</td>
+              <td>{{ user.emailU }}</td>
+              <td>{{ user.numtel }}</td>
+              <td>{{ user.salaireU | currency: 'EUR' }}</td>
+              <td>
+                <span class="badge bg-info text-dark">{{ user.role }}</span>
+              </td>
+              <td>
+                <!-- Bouton pour supprimer l'utilisateur -->
+                <button class="btn btn-danger btn-sm" (click)="deleteUser(user.idU)">
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div *ngIf="users.length === 0" class="text-center text-muted mt-4">
+        Aucun utilisateur à afficher.
+      </div>
+    </div>
+  </div>
+</div>

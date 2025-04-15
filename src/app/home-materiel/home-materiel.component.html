@@ -1,0 +1,107 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Liste des Matériels</h2>
+
+  <!-- Zone de recherche -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="search" class="form-label">Rechercher un matériel par nom :</label>
+      <input type="text" class="form-control" id="search" [(ngModel)]="searchTerm" (ngModelChange)="searchMateriels()">
+    </div>
+    <div class="">
+      <button class="btn btn-primary" (click)="sendTestEmail()">
+        <i class="bi bi-envelope"></i> Envoyer un e-mail de test
+      </button>
+    </div>
+  </div>
+
+  <!-- Message de résultat de recherche -->
+  <div *ngIf="filteredMateriels.length === 0" class="">
+    Aucun matériel trouvé.
+  </div>
+
+  <!-- Boutons de tri -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <button class="btn btn-outline-primary me-2" (click)="sortByPrice('asc')">
+        <i class="bi bi-sort-down-alt"></i> Tri Ascendant
+      </button>
+      <button class="btn btn-outline-primary" (click)="sortByPrice('desc')">
+        <i class="bi bi-sort-up-alt"></i> Tri Descendant
+      </button>
+    </div>
+    <div class="">
+      <button class="btn btn-success" (click)="toggleAddForm()">Ajouter un matériel</button>
+    </div>
+  </div>
+
+  <!-- Formulaire d'ajout -->
+  <div *ngIf="showAddForm" class="card p-4 mb-4 shadow-sm">
+    <h4>Ajouter un Matériel</h4>
+    <form (ngSubmit)="submitAdd()">
+      <div class="mb-3">
+        <label class="form-label">Nom</label>
+        <input type="text" class="form-control" [(ngModel)]="newMateriel.nomMateriel" name="nomMaterielAdd" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Quantité</label>
+        <input type="number" class="form-control" [(ngModel)]="newMateriel.quantite" name="quantiteAdd" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Prix</label>
+        <input type="number" class="form-control" [(ngModel)]="newMateriel.prixMateriel" name="prixMaterielAdd" required>
+      </div>
+      <button type="submit" class="btn btn-success">Ajouter</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelAdd()">Annuler</button>
+    </form>
+  </div>
+
+  <!-- Tableau des matériels -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Actions</th>
+          <th>Nom</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mat of filteredMateriels">
+          <td>
+            <button class="btn btn-sm btn-danger me-2" (click)="deleteMateriel(mat.idMateriel)">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-sm btn-primary" (click)="showUpdateForm(mat)">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </td>
+          <td>{{ mat.nomMateriel }}</td>
+          <td>{{ mat.quantite }}</td>
+          <td>{{ mat.prixMateriel }} TND</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Formulaire de mise à jour -->
+  <div *ngIf="selectedMateriel" class="card p-4 mt-4 shadow-sm">
+    <h4>Modifier le Matériel</h4>
+    <form (ngSubmit)="submitUpdate()">
+      <div class="mb-3">
+        <label class="form-label">Nom</label>
+        <input type="text" class="form-control" [(ngModel)]="selectedMateriel.nomMateriel" name="nomMaterielUpdate" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Quantité</label>
+        <input type="number" class="form-control" [(ngModel)]="selectedMateriel.quantite" name="quantiteUpdate" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Prix</label>
+        <input type="number" class="form-control" [(ngModel)]="selectedMateriel.prixMateriel" name="prixMaterielUpdate" required>
+      </div>
+      <button type="submit" class="">Mettre à jour</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="cancelUpdate()">Annuler</button>
+    </form>
+  </div>
+</div>

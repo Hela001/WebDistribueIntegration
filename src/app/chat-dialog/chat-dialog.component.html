@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Chat</h1>
+<mat-dialog-content>
+  <div class="chat-box">
+    <!-- Display Chat History -->
+    <div *ngFor="let msg of chatHistory" class="message" [ngClass]="msg.sender">
+      <div class="message-header">
+        <!-- Add Bot Avatar here -->
+        <img *ngIf="msg.sender === 'bot'" class="bot-avatar" src="https://via.placeholder.com/30" alt="Chatbot Avatar" />
+        <strong>{{ msg.sender }}:</strong>
+      </div>
+      <div>{{ msg.message }}</div>
+    </div>
+  </div>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Type your message</mat-label>
+    <textarea matInput [(ngModel)]="userMessage" rows="3"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Close</button>
+  <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+</mat-dialog-actions>

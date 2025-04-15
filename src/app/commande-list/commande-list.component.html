@@ -1,0 +1,61 @@
+<h2>Liste des Commandes</h2>
+
+<!-- Champ de recherche par statut -->
+<div class="search-filter">
+  <label for="statut">Filtrer par Statut :</label>
+  <select id="statut" [(ngModel)]="selectedStatut" (change)="onStatutChange()">
+    <option value="">Tous</option>
+    <option value="Preparation">Préparation</option>
+    <option value="EnCours">En cours</option>
+    <option value="Livré">Livré</option>
+  </select>
+</div>
+
+<!-- Champ de recherche par date -->
+<div class="search-filter">
+  <label for="dateCommande">Filtrer par Date :</label>
+  <input type="datetime-local" id="dateCommande" [(ngModel)]="selectedDate" (change)="onDateChange()" />
+</div>
+
+<div class="add-commande-container">
+  <a [routerLink]="['/commande/new']" class="btn-add">
+    Ajouter une Commande
+  </a>
+</div>
+
+<!-- Tableau des commandes -->
+<table class="commande-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Statut</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let commande of commandesPaginees">
+      <td>{{ commande.id | number }}</td>
+      <td>{{ commande.statut }}</td>
+      <td>{{ commande.dateCommande | date:'short' }}</td>
+      <td>{{ commande.total }} dt</td>
+      <td class="actions">
+        <button *ngIf="commande.id !== null" class="btn-delete" (click)="deleteCommande(commande.id)">
+          Supprimer
+        </button>
+        <button *ngIf="commande.id !== null" class="btn-edit" [routerLink]="['/commande/edit', commande.id]">
+          Modifier
+        </button>
+        <a [routerLink]="['/commandes', commande.id]" class="btn-details">Détails</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="pagination">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Précédent</button>
+  <span>Page {{ currentPage }} / {{ totalPages() }}</span>
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages()">Suivant</button>
+</div>
