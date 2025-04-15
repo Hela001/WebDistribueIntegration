@@ -1,59 +1,60 @@
-<<<<<<< HEAD
-# Rahma
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WebDistribue - Frontend</title>
+</head>
+<body>
+  <h1>WebDistribue - Frontend</h1>
+  <p>
+    Ce projet représente la partie frontend d'une application web de gestion de chantier, développée par un groupe de 6 étudiants.
+    L'application repose sur une architecture <strong>microservices</strong> avec 7 services distincts :
+  </p>
+  <ul>
+    <li>User</li>
+    <li>Matériel</li>
+    <li>Commande</li>
+    <li>Facture</li>
+    <li>Équipe</li>
+    <li>Véhicule</li>
+  </ul>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+  <h2>Technologies utilisées</h2>
+  <ul>
+    <li>Angular CLI version 16.2.16</li>
+    <li>Angular Material</li>
+    <li>RxJS</li>
+    <li>TypeScript</li>
+  </ul>
 
-## Development server
+  <h2>Démarrage du serveur de développement</h2>
+  <p>
+    Exécutez <code>ng serve</code> pour démarrer un serveur de développement. Accédez à l'application via <a href="http://localhost:4200">http://localhost:4200</a>.
+  </p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+  <h2>Génération de composants</h2>
+  <p>
+    Utilisez la commande <code>ng generate component nom-composant</code> pour générer un nouveau composant.
+  </p>
 
-## Code scaffolding
+  <h2>Build</h2>
+  <p>
+    Lancez <code>ng build</code> pour construire le projet. Les fichiers de build seront générés dans le répertoire <code>dist/</code>.
+  </p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  <h2>Tests unitaires</h2>
+  <p>
+    Exécutez <code>ng test</code> pour lancer les tests unitaires avec Karma.
+  </p>
 
-## Build
+  <h2>Tests end-to-end</h2>
+  <p>
+    Utilisez <code>ng e2e</code> pour exécuter les tests end-to-end.
+  </p>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-# Webdistribue
-=======
-# FrontendApp
->>>>>>> gestionuserdistribfront
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+  <h2>Aide supplémentaire</h2>
+  <p>
+    Pour plus d'informations sur Angular CLI, utilisez <code>ng help</code> ou consultez la <a href="https://angular.io/cli">documentation officielle Angular CLI</a>.
+  </p>
+</body>
+</html>
