@@ -30,6 +30,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VehiculeComponent } from './vehicule/vehicule.component';
+
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -82,6 +84,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     ProjetListComponent,
     ProjetDetailsComponent,
     ProjetFormComponent,
+
     HomeEquipeComponent,
     FactureListComponent,
     FactureAddComponent,
