@@ -1,43 +1,61 @@
+.custom-dialog-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;  
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    color: #333;
-    font-size: 2rem;
-    text-align: center;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .container {
-    display: flex;
-    height: 100vh;
-  }
-  
+.custom-dialog-container .mat-mdc-dialog-container .mdc-dialog__container {
+  max-height: 80vh;
+  transform: translateX(-50%) !important;
+}
 
-  mat-sidenav {
-    width: 250px;
-  }
-  
-  mat-sidenav-content {
-    padding: 20px;
-  }
-  
- 
-  a.mat-list-item:hover {
-    background-color: #f1f1f1;
-  }
-  
- 
-  
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.cdk-overlay-container {
+  z-index: 1200;
+}
 
+.cdk-global-overlay-wrapper {
+  display: flex;
+  position: absolute;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Custom Toastr Styles */
+::ng-deep .toast-top-right {
+  top: 20px !important;  /* Ensure it's at the top */
+  right: 20px !important; /* Ensure it's on the right */
+}
+
+::ng-deep .toast {
+  background-color: #3498db !important; /* Blue background */
+  color: white; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  padding: 12px 20px; /* Padding for better spacing */
+  font-size: 14px; /* Font size */
+  font-weight: 600; /* Bold text */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for better visibility */
+}
+
+::ng-deep .toast-title {
+  font-weight: bold; /* Title bold */
+}
+
+::ng-deep .toast-close-button {
+  color: white; /* White close button */
+  font-size: 20px; /* Larger close button */
+  font-weight: bold;
+}
+
+::ng-deep .toast-progress {
+  background-color: #2ecc71; /* Green progress bar */
+}
+
+::ng-deep .toast-success {
+  background-color: #2ecc71 !important; /* Green background for success */
+}

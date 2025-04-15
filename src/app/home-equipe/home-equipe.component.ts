@@ -27,6 +27,8 @@ throw new Error('Method not implemented.');
 
   data: any;
 editMode: any;
+  isDialogOpen: boolean = false; // Track if a dialog is open
+
   constructor(private dialog: MatDialog,private toastr: ToastrService,private backendService: BackendService,private equipeService: EquipeService) {}
 
   ngOnInit(): void {
@@ -90,20 +92,30 @@ equipeMenu: MatMenuPanel<any> | null | undefined;
   }
 
   openAddEquipeDialog(): void {
+    if (this.isDialogOpen) {
+      return;
+    }
+    
+    this.isDialogOpen = true;
+    
     const dialogRef = this.dialog.open(EquipeDialogComponent, {
-      width: '800px',
+      width: '500px',
+      panelClass: 'custom-dialog-container',
+      position: {
+        top: '100px',
+        left: '50%'
+      },
       data: {}
     });
   
     dialogRef.afterClosed().subscribe(result => {
+      this.isDialogOpen = false;
       if (result) {
-        // ✅ The dialog already called backendService.createEquipe and returned the created object
-        this.equipes.push(result); // Just add it to the list
+        this.equipes.push(result);
         this.toastr.success('Nouvelle équipe ajoutée avec succès !', 'Succès');
-        console.log('New equipe added:', result);
       }
     });
-      }
+  }
     
 
   editEquipe(equipe: Equipe): void {
@@ -140,11 +152,26 @@ equipeMenu: MatMenuPanel<any> | null | undefined;
   }
   openChatDialog(): void {
     const dialogRef = this.dialog.open(ChatDialogComponent, {
-      width: '800px'
+      width: '800px',
+      position: { top: '10%' },
+      maxHeight: '80vh'
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       console.log('Chat dialog was closed');
+    });
+  }
+
+
+  showSuccessMessage() {
+    this.toastr.success('Operation Successful!', 'Success', {
+      positionClass: 'toast-top-right' // Explicitly set position
+    });
+  }
+
+  showErrorMessage() {
+    this.toastr.error('Something went wrong!', 'Error', {
+      positionClass: 'toast-top-right' // Explicitly set position
     });
   }
 }

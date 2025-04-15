@@ -24,6 +24,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AdminGuard } from './auth/admin.guard';
+import { HomeMainComponent } from 'WebDistribueIntegration/home-main/home-main.component';
+
+// Import all components...
+
 const routes: Routes = [
   { path: 'commandes', component: CommandeListComponent },
   { path: 'commandes/:id', component: CommandedetailsComponent },
@@ -41,34 +45,23 @@ const routes: Routes = [
   { path: 'factures/add', component: FactureAddComponent },
   { path: 'factures/:id', component: FactureDetailsComponent },
   { path: 'factures/edit/:id', component: FactureEditComponent },
-  { path: 'materiel', component: HomeMaterielComponent },
-  //{ path: '', redirectTo: '/projets', pathMatch: 'full' },
-  // { path: '', redirectTo: '/factures', pathMatch: 'full' },
-  { path: '', component: ProjetListComponent }, // Page d'accueil
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
-  /*{ path: 'dashboard', component: DashboardComponent },*/
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
-
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AdminGuard] },
   { path: 'login', component: LoginComponent },
-  { path: '**', component: NotFoundComponent },
+  // Move these routes before the wildcard route
   { path: 'equipe', component: EquipeDialogComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'home-equipe', component: HomeEquipeComponent },
+  { path: 'homemain', component: HomeMainComponent },
 
-  { path: '', redirectTo: '/commandes', pathMatch: 'full' },
-
+  // This should be the last route only
   { path: '**', component: NotFoundComponent } // Pour toute autre route inconnue
-
 ];
-  @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-  })
-  
 
-  export class AppRoutingModule { }
-
-
-
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

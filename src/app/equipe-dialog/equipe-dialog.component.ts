@@ -11,18 +11,8 @@ import { Equipe } from '../models/equipe';
 @Component({
   selector: 'app-equipe-dialog',
   templateUrl: './equipe-dialog.component.html',
-  styleUrls: ['./equipe-dialog.component.css'], 
-  standalone: true,
-  imports: [
-    // Angular and Material Modules
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    CommonModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatDialogModule,
-  ]
+  styleUrls: ['./equipe-dialog.component.css']
+  // Remove standalone: true and imports array
 })
 export class EquipeDialogComponent {
 

@@ -22,6 +22,8 @@
     "@angular/router": "^16.2.0",
     "bootstrap": "^5.3.5",
     "jspdf": "^3.0.1",
+    "keycloak-angular": "^16.0.0",
+    "keycloak-js": "^25.0.0",
     "leaflet": "^1.9.4",
     "ng-charts": "^1.0.0-alpha",
     "ng-recaptcha": "^12.0.2",

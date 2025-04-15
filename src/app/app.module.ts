@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,13 +28,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-
 // Angular Material Modules
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,24 +45,44 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { EquipeDialogComponent } from './equipe-dialog/equipe-dialog.component';
 // Toastr
 import{ ToastrModule } from 'ngx-toastr';
 // Services
 import { BackendService } from './backend.service';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { HomeMainComponent } from 'WebDistribueIntegration/home-main/home-main.component';
+import { KeycloakService } from 'keycloak-angular';
+import { AuthInterceptor } from './auth.interceptor';
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8080',
+        realm: 'Commandekeycloak',
+        clientId: 'gateway', // le nom de ton client public dans Keycloak
+      },
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false
+      }
+    });
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    HomeMainComponent,
     AboutComponent,
     ContactComponent,
     NotFoundComponent,
     ProjetListComponent,
     ProjetDetailsComponent,
     ProjetFormComponent,
+    HomeEquipeComponent,
     FactureListComponent,
     FactureAddComponent,
     FactureDetailsComponent,
@@ -74,6 +95,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     CommandeAddComponent,
     CommandeEditComponent,
     CommandeListComponent,
+    EquipeDialogComponent,
     CommandedetailsComponent,
     LoginComponent,
     RegisterComponent,
@@ -88,8 +110,11 @@ import { RecaptchaModule } from 'ng-recaptcha';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     RecaptchaModule,
+    AppRoutingModule,  // Make sure AppRoutingModule is imported here
+    RouterModule,  
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
@@ -100,83 +125,32 @@ import { RecaptchaModule } from 'ng-recaptcha';
     MatToolbarModule,
     MatMenuModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
+      positionClass: 'toast-top-right', // Set the default position for all toasts
+      timeOut: 3000, // Optional: auto-hide after 3 seconds
+      progressBar: true, // Optional: show progress bar
+      closeButton: true, // Optional: add close button
+      preventDuplicates: true, // Prevent duplicate toasts
     }),
   ],
-  providers: [BackendService],
+  providers: [
+    KeycloakService,
+    
+      {
+        provide: APP_INITIALIZER,
+        useFactory: initializeKeycloak,
+        multi: true,
+        deps: [KeycloakService],
+      },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+      }
+    
+    
+    
+    
+    ,BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-/*import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule, DatePipe } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-// Material Modules
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-
-// Other modules
-import { RecaptchaModule } from 'ng-recaptcha';
-import { ToastrModule } from 'ngx-toastr';
-
-@NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    
-    // Material modules
-    MatSidenavModule,
-    MatListModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatSelectModule,
-    MatCardModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    
-    RecaptchaModule,
-    ToastrModule.forRoot()
-  ],
-  providers: [
-    DatePipe
-  ],
-  // ... rest of your module
-})
-export class AppModule { }*/

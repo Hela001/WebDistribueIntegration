@@ -1,43 +1,20 @@
-<p>home-equipe works!</p>
 <mat-sidenav-container class="container">
-    <mat-sidenav #sidenav mode="side" opened>
-      <div class="sidenav-header">
-        <!-- Add a Logo or Title -->
-        <div class="logo">
-          <img src="assets/logo.png" alt="Logo" class="logo-image">
-          <span class="logo-text">Dashboard</span>
-        </div>
-      </div>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+    </button>
+    
+    <span class="spacer"></span>
+
+    <div class="toolbar-buttons">
+      <button mat-raised-button color="primary" (click)="openChatDialog()">Chat</button>
+      <button mat-raised-button color="primary" (click)="openAddEquipeDialog()">Ajouter une Équipe</button>
+    </div>
   
-      <div class="sidenav-content">
-        <mat-nav-list>
-          <a mat-list-item (click)="goToHome()">Home</a>
-          <a mat-list-item (click)="goToEquipe()">Gestion Equipe</a>
-          <a mat-list-item (click)="goToProfile()">Profile</a>
-          <a mat-list-item (click)="goToSettings()">Settings</a>
-        </mat-nav-list>
-      </div>
-    </mat-sidenav>
-  
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-  
-      <span class="toolbar-title">My Dashboard</span>
-  
-      <span class="spacer"></span>
-  
-      <button mat-button [matMenuTriggerFor]="equipeMenu">
-        Gestion Equipe
-      </button>
-  
-      <button mat-button (click)="openChatDialog()">Chat</button>
-      <button mat-button>Profile</button>
-      <button mat-button>Logout</button>
-    </mat-toolbar>
-  
-    <!-- Menu for Equipes -->
+    
+  </mat-toolbar>
+
+  <!-- Menu for Equipes -->
   <mat-menu #equipeMenu="matMenu">
     <!-- Loop through equipes to generate each menu item -->
     <div *ngFor="let equipe of equipes" class="menu-item" (click)="showEquipeDetails(equipe)">
@@ -55,15 +32,7 @@
       <p>No equipes available.</p>
     </div>
   </mat-menu>
-  
-  <!-- 🔼 Add Equipe Button (Outside the Menu & Visible at the Top) -->
-  <div style="padding: 16px;">
-    <button mat-raised-button color="primary" (click)="openAddEquipeDialog()">
-      <mat-icon>add</mat-icon>
-      Ajouter une Équipe
-    </button>
-  </div>
-  
+
   <!-- Équipe List -->
   <app-equipe-list></app-equipe-list>
   
@@ -73,3 +42,5 @@
     <p><strong>Nom:</strong> {{ selectedEquipe.name }}</p>
     <p><strong>Description:</strong> {{ selectedEquipe.description }}</p>
   </div>
+  
+</mat-sidenav-container>

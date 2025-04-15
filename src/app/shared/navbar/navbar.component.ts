@@ -57,5 +57,18 @@ export class NavbarComponent implements OnInit {
     this.userService.logout().subscribe();
   }
  
+  
+goToHome() {
+  throw new Error('Method not implemented.');
+  }
+  goToEquipe() {
+  throw new Error('Method not implemented.');
+  }
+  goToProfile() {
+  throw new Error('Method not implemented.');
+  }
+  goToSettings() {
+  throw new Error('Method not implemented.');
+  }
 }
 

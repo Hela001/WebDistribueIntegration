@@ -7,7 +7,7 @@
       <label for="search" class="form-label">Rechercher un matériel par nom :</label>
       <input type="text" class="form-control" id="search" [(ngModel)]="searchTerm" (ngModelChange)="searchMateriels()">
     </div>
-    <div class="col-md-6 d-flex justify-content-end">
+    <div class="">
       <button class="btn btn-primary" (click)="sendTestEmail()">
         <i class="bi bi-envelope"></i> Envoyer un e-mail de test
       </button>
@@ -15,7 +15,7 @@
   </div>
 
   <!-- Message de résultat de recherche -->
-  <div *ngIf="filteredMateriels.length === 0" class="alert alert-warning">
+  <div *ngIf="filteredMateriels.length === 0" class="">
     Aucun matériel trouvé.
   </div>
 
@@ -29,7 +29,7 @@
         <i class="bi bi-sort-up-alt"></i> Tri Descendant
       </button>
     </div>
-    <div class="col-md-6 d-flex justify-content-end">
+    <div class="">
       <button class="btn btn-success" (click)="toggleAddForm()">Ajouter un matériel</button>
     </div>
   </div>
@@ -100,7 +100,7 @@
         <label class="form-label">Prix</label>
         <input type="number" class="form-control" [(ngModel)]="selectedMateriel.prixMateriel" name="prixMaterielUpdate" required>
       </div>
-      <button type="submit" class="btn btn-success">Mettre à jour</button>
+      <button type="submit" class="">Mettre à jour</button>
       <button type="button" class="btn btn-secondary ms-2" (click)="cancelUpdate()">Annuler</button>
     </form>
   </div>
